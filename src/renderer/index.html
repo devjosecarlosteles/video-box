@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Box</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Barra de título customizada -->
+      <div class="title-bar" id="titleBar">
+        <div class="title-bar-content">
+          <span class="app-title">Video Box</span>
+          <div class="window-controls">
+            <button class="control-btn" id="minimizeBtn" title="Minimizar">
+              <svg width="12" height="12" viewBox="0 0 12 12">
+                <rect x="2" y="5" width="8" height="2" fill="currentColor" />
+              </svg>
+            </button>
+            <button class="control-btn" id="closeBtn" title="Fechar">
+              <svg width="12" height="12" viewBox="0 0 12 12">
+                <path
+                  d="M2 2l8 8M10 2l-8 8"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Container do vídeo -->
+      <div class="video-container">
+        <div class="camera-select-container">
+          <select id="cameraSelect"></select>
+        </div>
+        <video id="videoElement" autoplay muted playsinline></video>
+
+        <!-- Overlay de status -->
+        <div class="video-overlay" id="videoOverlay">
+          <div class="status-message">
+            <div class="spinner"></div>
+            <p>Iniciando câmera...</p>
+          </div>
+        </div>
+
+        <!-- Controles flutuantes -->
+        <div class="floating-controls">
+          <button
+            class="control-btn floating"
+            id="toggleTopBtn"
+            title="Alternar sempre no topo"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <path d="M8 2L2 8h3v6h6V8h3L8 2z" fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Indicador de erro -->
+      <div class="error-message" id="errorMessage" style="display: none">
+        <p>Erro ao acessar a câmera. Verifique as permissões.</p>
+        <button id="retryBtn">Tentar novamente</button>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

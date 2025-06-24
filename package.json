@@ -1,0 +1,46 @@
+{
+  "name": "video-box",
+  "version": "1.0.0",
+  "description": "Aplicação Electron para exibir webcam em janela arrastável",
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run build:watch\" \"npm run electron:dev\"",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "electron:dev": "wait-on dist/main.js && electron .",
+    "start": "npm run build && electron .",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win"
+  },
+  "keywords": [
+    "electron",
+    "webcam",
+    "video",
+    "desktop"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "concurrently": "^8.2.2",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "typescript": "^5.3.2",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.videobox.app",
+    "productName": "Video Box",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "src/renderer/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    }
+  }
+}
