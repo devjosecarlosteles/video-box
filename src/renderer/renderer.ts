@@ -53,6 +53,9 @@ async function startCamera(): Promise<void> {
     // Solicitar acesso à câmera
     stream = await navigator.mediaDevices.getUserMedia(cameraConstraints);
 
+    // Atualiza a lista de câmeras agora que a permissão foi concedida
+    await listCameras();
+
     // Conectar stream ao elemento de vídeo
     videoElement.srcObject = stream;
 
